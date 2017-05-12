@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "RPAMicroservicesV2", "RPAMicroservicesV2\RPAMicroservicesV2.sfproj", "{46AC03DE-923B-49B2-845D-38A69E182BB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationService", "ValidationService\ValidationService.csproj", "{72C28F2D-D220-4D77-B282-B64D9098548A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeCheckerService", "ScopeCheckerService\ScopeCheckerService.csproj", "{337B7826-C2EA-43AF-9D6C-1BDCD3B70B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecutionService", "ExecutionService\ExecutionService.csproj", "{115E80B5-D4D8-453D-8CC6-C5F6F215108E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedService", "SharedService\SharedService.csproj", "{4282D648-094A-42BF-82F2-E39D662FB262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedBackService", "FeedBackService\FeedBackService.csproj", "{01560D9F-AE06-498A-BB32-BC24FDE50C8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLPService", "NLPService\NLPService.csproj", "{945607B7-275E-4A6A-BEF5-531027D309EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46AC03DE-923B-49B2-845D-38A69E182BB7}.Debug|x64.ActiveCfg = Debug|x64
+		{46AC03DE-923B-49B2-845D-38A69E182BB7}.Debug|x64.Build.0 = Debug|x64
+		{46AC03DE-923B-49B2-845D-38A69E182BB7}.Debug|x64.Deploy.0 = Debug|x64
+		{46AC03DE-923B-49B2-845D-38A69E182BB7}.Release|x64.ActiveCfg = Release|x64
+		{46AC03DE-923B-49B2-845D-38A69E182BB7}.Release|x64.Build.0 = Release|x64
+		{46AC03DE-923B-49B2-845D-38A69E182BB7}.Release|x64.Deploy.0 = Release|x64
+		{72C28F2D-D220-4D77-B282-B64D9098548A}.Debug|x64.ActiveCfg = Debug|x64
+		{72C28F2D-D220-4D77-B282-B64D9098548A}.Debug|x64.Build.0 = Debug|x64
+		{72C28F2D-D220-4D77-B282-B64D9098548A}.Release|x64.ActiveCfg = Release|x64
+		{72C28F2D-D220-4D77-B282-B64D9098548A}.Release|x64.Build.0 = Release|x64
+		{337B7826-C2EA-43AF-9D6C-1BDCD3B70B33}.Debug|x64.ActiveCfg = Debug|x64
+		{337B7826-C2EA-43AF-9D6C-1BDCD3B70B33}.Debug|x64.Build.0 = Debug|x64
+		{337B7826-C2EA-43AF-9D6C-1BDCD3B70B33}.Release|x64.ActiveCfg = Release|x64
+		{337B7826-C2EA-43AF-9D6C-1BDCD3B70B33}.Release|x64.Build.0 = Release|x64
+		{115E80B5-D4D8-453D-8CC6-C5F6F215108E}.Debug|x64.ActiveCfg = Debug|x64
+		{115E80B5-D4D8-453D-8CC6-C5F6F215108E}.Debug|x64.Build.0 = Debug|x64
+		{115E80B5-D4D8-453D-8CC6-C5F6F215108E}.Release|x64.ActiveCfg = Release|x64
+		{115E80B5-D4D8-453D-8CC6-C5F6F215108E}.Release|x64.Build.0 = Release|x64
+		{4282D648-094A-42BF-82F2-E39D662FB262}.Debug|x64.ActiveCfg = Debug|x64
+		{4282D648-094A-42BF-82F2-E39D662FB262}.Debug|x64.Build.0 = Debug|x64
+		{4282D648-094A-42BF-82F2-E39D662FB262}.Release|x64.ActiveCfg = Release|x64
+		{4282D648-094A-42BF-82F2-E39D662FB262}.Release|x64.Build.0 = Release|x64
+		{01560D9F-AE06-498A-BB32-BC24FDE50C8E}.Debug|x64.ActiveCfg = Debug|x64
+		{01560D9F-AE06-498A-BB32-BC24FDE50C8E}.Debug|x64.Build.0 = Debug|x64
+		{01560D9F-AE06-498A-BB32-BC24FDE50C8E}.Release|x64.ActiveCfg = Release|x64
+		{01560D9F-AE06-498A-BB32-BC24FDE50C8E}.Release|x64.Build.0 = Release|x64
+		{945607B7-275E-4A6A-BEF5-531027D309EF}.Debug|x64.ActiveCfg = Debug|x64
+		{945607B7-275E-4A6A-BEF5-531027D309EF}.Debug|x64.Build.0 = Debug|x64
+		{945607B7-275E-4A6A-BEF5-531027D309EF}.Release|x64.ActiveCfg = Release|x64
+		{945607B7-275E-4A6A-BEF5-531027D309EF}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

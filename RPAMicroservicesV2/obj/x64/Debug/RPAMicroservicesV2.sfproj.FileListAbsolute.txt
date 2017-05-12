@@ -1,0 +1,1 @@
+C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\RPAMicroservicesV2\obj\x64\Debug\RPAMicroservicesV2.sfprojResolveAssemblyReference.cache
