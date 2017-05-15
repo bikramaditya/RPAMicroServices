@@ -29,14 +29,9 @@ namespace ScopeCheckerService
         public ScopeCheckerService(StatefulServiceContext serviceContext) : base(serviceContext)
         {
         }
-
-        public ScopeCheckerService(StatefulServiceContext serviceContext, IReliableStateManagerReplica reliableStateManagerReplica) : base(serviceContext, reliableStateManagerReplica)
-        {
-        }
-
+        
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-
             string listenQueueName = CloudConfigurationManager.GetSetting("validQueueName");
 
             yield return new ServiceReplicaListener(context => new ServiceBusQueueCommunicationListener(
