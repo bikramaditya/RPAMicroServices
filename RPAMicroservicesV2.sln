@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "RPAMicroservicesV2", "RPAMicroservicesV2\RPAMicroservicesV2.sfproj", "{46AC03DE-923B-49B2-845D-38A69E182BB7}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedBackService", "FeedBackService\FeedBackService.csproj", "{01560D9F-AE06-498A-BB32-BC24FDE50C8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLPService", "NLPService\NLPService.csproj", "{945607B7-275E-4A6A-BEF5-531027D309EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInteractionService", "UserInteractionService\UserInteractionService.csproj", "{7DF3B486-123B-4418-95AE-43BDCFB41F47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{945607B7-275E-4A6A-BEF5-531027D309EF}.Debug|x64.Build.0 = Debug|x64
 		{945607B7-275E-4A6A-BEF5-531027D309EF}.Release|x64.ActiveCfg = Release|x64
 		{945607B7-275E-4A6A-BEF5-531027D309EF}.Release|x64.Build.0 = Release|x64
+		{7DF3B486-123B-4418-95AE-43BDCFB41F47}.Debug|x64.ActiveCfg = Debug|x64
+		{7DF3B486-123B-4418-95AE-43BDCFB41F47}.Debug|x64.Build.0 = Debug|x64
+		{7DF3B486-123B-4418-95AE-43BDCFB41F47}.Release|x64.ActiveCfg = Release|x64
+		{7DF3B486-123B-4418-95AE-43BDCFB41F47}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,3 @@
-C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\obj\x64\Debug\ValidationService.csprojResolveAssemblyReference.cache
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\ValidationService.exe.config
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\ValidationService.exe
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\ValidationService.pdb
@@ -23,5 +22,6 @@ C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\Microsoft.ServiceFabric.Services.xml
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\Microsoft.WindowsAzure.Configuration.xml
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\bin\x64\Debug\System.Fabric.xml
+C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\obj\x64\Debug\ValidationService.csprojResolveAssemblyReference.cache
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\obj\x64\Debug\ValidationService.exe
 C:\Users\bipadh\Documents\PB\RPAMicroservicesV2\ValidationService\obj\x64\Debug\ValidationService.pdb
