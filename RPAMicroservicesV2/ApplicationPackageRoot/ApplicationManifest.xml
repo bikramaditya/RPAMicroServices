@@ -4,9 +4,6 @@
     <Parameter Name="UserInteractionService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="UserInteractionService_PartitionCount" DefaultValue="1" />
     <Parameter Name="UserInteractionService_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="RemoteExecutor_MinReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="RemoteExecutor_PartitionCount" DefaultValue="1" />
-    <Parameter Name="RemoteExecutor_TargetReplicaSetSize" DefaultValue="3" />
     <Parameter Name="NLPService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="NLPService_PartitionCount" DefaultValue="1" />
     <Parameter Name="NLPService_TargetReplicaSetSize" DefaultValue="3" />
@@ -31,10 +28,6 @@
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="UserInteractionServicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="RemoteExecutorPkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
@@ -70,11 +63,6 @@
     <Service Name="UserInteractionService">
       <StatefulService ServiceTypeName="UserInteractionServiceType" TargetReplicaSetSize="[UserInteractionService_TargetReplicaSetSize]" MinReplicaSetSize="[UserInteractionService_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[UserInteractionService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
-      </StatefulService>
-    </Service>
-    <Service Name="RemoteExecutor">
-      <StatefulService ServiceTypeName="RemoteExecutorType" TargetReplicaSetSize="[RemoteExecutor_TargetReplicaSetSize]" MinReplicaSetSize="[RemoteExecutor_MinReplicaSetSize]">
-        <UniformInt64Partition PartitionCount="[RemoteExecutor_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
     <Service Name="NLPService">

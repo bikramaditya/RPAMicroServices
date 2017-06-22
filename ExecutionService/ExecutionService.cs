@@ -29,7 +29,7 @@ namespace ExecutionService
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
 
-            string listenQueueName = CloudConfigurationManager.GetSetting("inScopeQueueName");
+            string listenQueueName = CloudConfigurationManager.GetSetting("executionQueueName");
 
             yield return new ServiceReplicaListener(context => new ServiceBusQueueCommunicationListener(
                 new Handler(this)
@@ -42,8 +42,7 @@ namespace ExecutionService
     {
         private readonly StatefulService _service;
         QueueClient _errorQueueClient;
-        QueueClient _executionQueueClient;
-        QueueClient _moreInfoQueueClient;
+
         MySql.Data.MySqlClient.MySqlConnection _conn;
         string _myConnectionString;
 
@@ -56,12 +55,8 @@ namespace ExecutionService
             string moreInfoQueueName = CloudConfigurationManager.GetSetting("moreInfoQueueName");
 
             _errorQueueClient = QueueClient.CreateFromConnectionString(sendConnString, errorQueueName);
-            _executionQueueClient = QueueClient.CreateFromConnectionString(sendConnString, executionQueueName);
-            _moreInfoQueueClient = QueueClient.CreateFromConnectionString(sendConnString, moreInfoQueueName);
 
             _service = service;
-
-
             
             String DBHost = CloudConfigurationManager.GetSetting("DBHost");
             String DBName = CloudConfigurationManager.GetSetting("DBName");
@@ -83,108 +78,34 @@ namespace ExecutionService
             try
             {
                 ticket = message.GetBody<RPATicket>();
-                bool isValid = checkInfo(ticket);
-
-                ticket = populateVariables(ticket);
-
+                bool isValid = validate(ticket);
+                
                 if (isValid)
                 {
-                    sendToExecutionQueue(message);
+                    executionScript(ticket);
                 }
                 else
                 {
-                    sendToMoreInfoQueue(message);
+                    sendToErrorQueue(ticket);
                 }
             }
             catch (Exception e)
             {
-                if (ticket != null)
-                {
-
-                }
                 ticket.Error = e.Message;
-                sendToErrorQueue(message);
+                sendToErrorQueue(ticket);
                 return Task.FromResult(false);
             }
+            storeResultToDB(ticket);
 
             return Task.FromResult(true);
-        }
-
-        private RPATicket populateVariables(RPATicket ticket)
-        {
-            RPAResult result = ticket.Matches[0];
-
-            String userMsg = result.UserConfirmationMsg;
-            String scriptText = result.ScriptText;
-
-            var pattern = @"\{(.*?)\}";
             
-            var matches = Regex.Matches(userMsg, pattern);
-
-            foreach (Match m in matches)
-            {
-                String variable = m.Groups[1].Value;
-                String VarRegex = getPatternFromDB(variable);
-                string value = getFirstMatchFrom_Ticket_Desc(ticket, VarRegex);
-                userMsg = userMsg.Replace("{"+ variable+"}",value);
-            }
-
-            matches = Regex.Matches(scriptText, pattern);
-
-            foreach (Match m in matches)
-            {
-                String variable = m.Groups[1].Value;
-                String VarRegex = getPatternFromDB(variable);
-                string value = getFirstMatchFrom_Ticket_Desc(ticket, VarRegex);
-                scriptText = scriptText.Replace("{" + variable + "}", value);
-            }
-
-            ticket.Matches[0].UserConfirmationMsg = userMsg;
-            ticket.Matches[0].ScriptText = scriptText;
-
-            return ticket;
         }
 
-        private string getFirstMatchFrom_Ticket_Desc(RPATicket ticket, string pattern)
+        private void storeResultToDB(RPATicket ticket)
         {
-            String variable="";
-            String desc = ticket.TicketDescription;            
-            var matches = Regex.Matches(desc, pattern);
-
-            foreach (Match m in matches)
-            {
-                variable = m.Groups[0].Value;
-                break;
-            }
-
-            return variable;
+            checkAndOpenConn();
+            //store results success and error
         }
-
-        private string getPatternFromDB(string variable)
-        {
-            String varRegex = "";
-            try
-            {
-                checkAndOpenConn();
-                MySqlCommand cmd = _conn.CreateCommand();
-
-                cmd.CommandText = "select regex_pattern from variable_regex_map where variable_name='"+variable+"'";
-                MySqlDataAdapter dap = new MySqlDataAdapter(cmd);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    varRegex = dataReader.GetString("regex_pattern");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return varRegex;
-        }
-
         private void checkAndOpenConn()
         {
             _conn = new MySql.Data.MySqlClient.MySqlConnection();
@@ -192,13 +113,11 @@ namespace ExecutionService
             _conn.Open();
         }
 
-        private void sendToExecutionQueue(BrokeredMessage message)
+        private void executionScript(RPATicket ticket)
         {
             try
             {
-                BrokeredMessage ticketMsg = message.Clone();
-
-                _executionQueueClient.Send(ticketMsg);
+                //connect to remote machine and execute
             }
             catch (Exception e)
             {
@@ -206,32 +125,18 @@ namespace ExecutionService
             }
         }
 
-        private bool checkInfo(RPATicket ticket)
+        private bool validate(RPATicket ticket)
         {
             return true;
         }
 
-        private void sendToErrorQueue(BrokeredMessage message)
+        private void sendToErrorQueue(RPATicket ticket)
         {
             try
             {
-                BrokeredMessage ticketMsg = message.Clone();
+                BrokeredMessage ticketMsg = new BrokeredMessage(ticket);
 
                 _errorQueueClient.Send(ticketMsg);
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }
-
-        }
-        private void sendToMoreInfoQueue(BrokeredMessage message)
-        {
-            try
-            {
-                BrokeredMessage ticketMsg = message.Clone();
-
-                _moreInfoQueueClient.Send(ticketMsg);
             }
             catch (Exception e)
             {

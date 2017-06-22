@@ -4,9 +4,6 @@
     <Parameter Name="UserInteractionService_PartitionCount" Value="1" />
     <Parameter Name="UserInteractionService_MinReplicaSetSize" Value="3" />
     <Parameter Name="UserInteractionService_TargetReplicaSetSize" Value="3" />
-    <Parameter Name="RemoteExecutor_PartitionCount" Value="1" />
-    <Parameter Name="RemoteExecutor_MinReplicaSetSize" Value="3" />
-    <Parameter Name="RemoteExecutor_TargetReplicaSetSize" Value="3" />
     <Parameter Name="NLPService_PartitionCount" Value="1" />
     <Parameter Name="NLPService_MinReplicaSetSize" Value="3" />
     <Parameter Name="NLPService_TargetReplicaSetSize" Value="3" />
